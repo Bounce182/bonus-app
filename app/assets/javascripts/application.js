@@ -11,6 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= //require jquery_ujs
+//= //require turbolinks
+//= //require_tree .
+
+$(document).ready(function() {
+    $('#import-data').click(function(){
+        $('#js-msg').removeClass('no-display').addClass('app-msg').html('Loading, please wait... Data import will take about 1-2 minutes.')
+    })
+})

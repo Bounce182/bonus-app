@@ -1,27 +1,41 @@
-<h1>Listing calendar_lines</h1>
+<h1>Listing user bonuses</h1>
 
-<table>
+<% if @calendar_lines.count == 0 %>
+    No data found. Please import it at first: <%= link_to 'Import data', calendar_lines_path(:update => true), :id => 'import-data' %>
+<% else %>
+
+<table class="listing">
   <thead>
     <tr>
-      <th>User</th>
+      <th>Bonus id</th>
+      <th>User id</th>
       <th>Date</th>
-      <th colspan="3"></th>
+      <th>Amount</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @calendar_lines.each do |calendar_line| %>
       <tr>
+        <td><%= calendar_line.id %></td>
         <td><%= calendar_line.user_id %></td>
         <td><%= calendar_line.date %></td>
+        <td><%= calendar_line.fragments[0].amount %></td>
         <td><%= link_to 'Show', calendar_line %></td>
         <td><%= link_to 'Edit', edit_calendar_line_path(calendar_line) %></td>
         <td><%= link_to 'Destroy', calendar_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+  <tr>
+    <td class="center" colspan="9">
+      <%= will_paginate @dvds %>
+    </td>
+  </tr>
+  </tfoot>
 </table>
 
-<br>
+<% end %>
 
-<%= link_to 'New Calendar line', new_calendar_line_path %>

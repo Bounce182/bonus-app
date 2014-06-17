@@ -8,7 +8,34 @@
 </head>
 <body>
 
-<%= yield %>
+
+<div id="site-container">
+  <div id="top-header">
+    <div class="slogan">Bonus app</div>
+    <div class="clear"></div>
+  </div>
+  <div id="content-block">
+    <div class="left">
+      <div class="menu-container">
+        <div class="menu-caption">MAIN MENU</div>
+        <ul class="left-menu">
+          <li><%= link_to 'Home',root_path %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="right">
+      <div id="js-msg" class="no-display"></div>
+      <% flash.each do |name, msg| %>
+          <div class="app-msg"><%= msg %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div id="footer">
+    <div class="footer-text">&copy; Bonus app, 2014</div>
+  </div>
+</div>
 
 </body>
 </html>
