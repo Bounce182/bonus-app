@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Calendar line:</strong>
+  <%= @fragment.calendar_line %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @fragment.amount %>
+</p>
+
+<%= link_to 'Edit', edit_fragment_path(@fragment) %> |
+<%= link_to 'Back', fragments_path %>

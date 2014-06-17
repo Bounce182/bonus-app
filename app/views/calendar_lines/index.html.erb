@@ -1,0 +1,27 @@
+<h1>Listing calendar_lines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calendar_lines.each do |calendar_line| %>
+      <tr>
+        <td><%= calendar_line.user_id %></td>
+        <td><%= calendar_line.date %></td>
+        <td><%= link_to 'Show', calendar_line %></td>
+        <td><%= link_to 'Edit', edit_calendar_line_path(calendar_line) %></td>
+        <td><%= link_to 'Destroy', calendar_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Calendar line', new_calendar_line_path %>
