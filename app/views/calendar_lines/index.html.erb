@@ -18,7 +18,6 @@
       <th>User id</th>
       <th>Date</th>
       <th>Amount</th>
-      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -29,15 +28,12 @@
         <td><%= calendar_line.user_id %></td>
         <td><%= calendar_line.date %></td>
         <td><%= calendar_line.fragments[0].amount %></td>
-        <td><%= link_to 'Show', calendar_line %></td>
-        <td><%= link_to 'Edit', edit_calendar_line_path(calendar_line) %></td>
-        <td><%= link_to 'Destroy', calendar_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
   <tfoot>
   <tr>
-    <td class="center" colspan="9">
+    <td class="center" colspan="4">
       <%= will_paginate @dvds %>
     </td>
   </tr>

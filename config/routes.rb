@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :fragments
   resources :calendar_lines, :path => 'bonuses'
 
   root to: "calendar_lines#index"
