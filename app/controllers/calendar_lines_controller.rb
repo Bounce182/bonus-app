@@ -7,7 +7,7 @@ class CalendarLinesController < ApplicationController
 
     @data_exists = false
 
-    if(CalendarLine.all.count > 0 && Fragment.all.count > 0)
+    if CalendarLine.all.count > 0 && Fragment.all.count > 0
       @data_exists = true
     end
 
@@ -18,7 +18,7 @@ class CalendarLinesController < ApplicationController
 
     if params[:q].present? && params[:q][:user_id_eq].present?
       @search = CalendarLine.search(params[:q])
-      @amount = get_total_amount(params[:q][:user_id_eq])
+      @amount = CalendarLine.total_bonus_amount(params[:q][:user_id_eq])
     else
       @search = CalendarLine.search
     end
@@ -62,12 +62,5 @@ class CalendarLinesController < ApplicationController
       response = Net::HTTP.get_response(URI.parse(url))
       buffer = response.body
       JSON.parse(buffer)
-    end
-
-    def get_total_amount(user_id)
-      amount = 0
-      cl_list = CalendarLine.where(:user_id => user_id)
-      cl_list.each { |cl| amount += cl.total_amount }
-      amount
     end
 end
