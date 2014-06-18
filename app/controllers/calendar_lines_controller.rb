@@ -70,5 +70,4 @@ class CalendarLinesController < ApplicationController
       cl_list.each { |cl| amount += cl.total_amount }
       amount
     end
-
 end
