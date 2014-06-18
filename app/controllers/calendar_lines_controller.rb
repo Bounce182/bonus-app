@@ -5,7 +5,13 @@ class CalendarLinesController < ApplicationController
 
   def index
 
-    if params[:update]
+    @data_exists = false
+
+    if(CalendarLine.all.count > 0 && Fragment.all.count > 0)
+      @data_exists = true
+    end
+
+    if params[:update] && @data_exists == false
       import_data
       redirect_to calendar_lines_url, notice: 'Database was updated successfully.'
     end
@@ -18,6 +24,7 @@ class CalendarLinesController < ApplicationController
     end
 
     @calendar_lines = @search.result.paginate(:page => params[:page], :per_page => 10)
+
   end
 
   private

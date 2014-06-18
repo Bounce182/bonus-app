@@ -1,7 +1,9 @@
 <h1>Listing user bonuses</h1>
 
-<% if @calendar_lines.count == 0 %>
+<% if @data_exists == false %>
     No data found. Please import it at first: <%= link_to 'Import data', calendar_lines_path(:update => true), :id => 'import-data' %>
+<% elsif @data_exists == true && @calendar_lines.count == 0 %>
+    No data was found depending your search parameters.
 <% else %>
 
 <%= search_form_for @search do |f| %>
@@ -40,8 +42,8 @@
   </tfoot>
 </table>
 
-<% end %>
-
 <% if @amount %>
     <div class="total-amount">Users total amount of bonuses: <b><%= @amount %></b></div>
+<% end %>
+    
 <% end %>
