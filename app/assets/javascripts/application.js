@@ -18,6 +18,6 @@ $(document).ready(function() {
     })
 
     $('#reset-search-form').click(function(){
-        $('#q_user_id_start').val('');
+        $('#q_user_id_eq').val('');
     })
 })

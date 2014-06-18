@@ -10,13 +10,14 @@ class CalendarLinesController < ApplicationController
       redirect_to calendar_lines_url, notice: 'Database was updated successfully.'
     end
 
-    @search = CalendarLine.search(params[:q])
-    @calendar_lines = @search.result.paginate(:page => params[:page], :per_page => 10)
-
-    if params[:q].present? && params[:q][:user_id_start].present?
-      @amount = get_total_amount(params[:q][:user_id_start]) if params[:q][:user_id_start].present?
+    if params[:q].present? && params[:q][:user_id_eq].present?
+      @search = CalendarLine.search(params[:q])
+      @amount = get_total_amount(params[:q][:user_id_eq])
+    else
+      @search = CalendarLine.search
     end
 
+    @calendar_lines = @search.result.paginate(:page => params[:page], :per_page => 10)
   end
 
   private

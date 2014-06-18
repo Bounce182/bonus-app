@@ -6,8 +6,8 @@
 
 <%= search_form_for @search do |f| %>
     <div class="field">
-      <%= f.label :user_id_start, 'User id' %>
-      <%= f.number_field :user_id_start %><%= f.submit %><%= f.submit 'Clear', :id => 'reset-search-form' %>
+      <%= f.label :user_id_eq, 'User id' %>
+      <%= f.number_field :user_id_eq %><%= f.submit %><%= f.submit 'Clear', :id => 'reset-search-form' %>
     </div>
 <% end %>
 
