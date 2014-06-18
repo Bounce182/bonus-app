@@ -46,4 +46,6 @@
 
 <% end %>
 
-<%# params %>
+<% if @amount %>
+    <div class="total-amount">Users total amount of bonuses: <b><%= @amount %></b></div>
+<% end %>

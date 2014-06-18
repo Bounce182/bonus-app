@@ -7,6 +7,7 @@ class CalendarLinesController < ApplicationController
   # GET /calendar_lines
   # GET /calendar_lines.json
   def index
+
     if params[:update]
       import_data
       redirect_to calendar_lines_url, notice: 'Database was updated successfully.'
@@ -14,6 +15,11 @@ class CalendarLinesController < ApplicationController
 
     @search = CalendarLine.search(params[:q])
     @calendar_lines = @search.result.paginate(:page => params[:page], :per_page => 10)
+
+    if params[:q].present? && params[:q][:user_id_start].present?
+      @amount = get_total_amount(params[:q][:user_id_start]) if params[:q][:user_id_start].present?
+    end
+
   end
 
   # GET /calendar_lines/1
@@ -115,9 +121,13 @@ class CalendarLinesController < ApplicationController
       response = Net::HTTP.get_response(URI.parse(url))
       buffer = response.body
       JSON.parse(buffer)
-      # Uncomment for local testings
-      #contents = File.read("#{Rails.root.join('data.json').to_s}" )
-      #JSON.parse(contents)
+    end
+
+    def get_total_amount(user_id)
+      amount = 0
+      cl_list = CalendarLine.where(:user_id => user_id)
+      cl_list.each { |cl| amount += cl.total_amount }
+      amount
     end
 
 end

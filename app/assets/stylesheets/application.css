@@ -159,13 +159,17 @@ table.listing{
 
 table.listing th{
     background-color: #cccccc;
-    border: 1px solid #2E2F30;
+    border: 1px solid #2e2f30;
 }
 
 table.listing td{
     border: 1px solid #cccccc;
 }
 
+.total-amount{
+    background-color: darkorange;
+    margin-top: 10px;
+}
 
 .clear{
     clear: both;
