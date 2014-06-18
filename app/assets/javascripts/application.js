@@ -19,4 +19,8 @@ $(document).ready(function() {
     $('#import-data').click(function(){
         $('#js-msg').removeClass('no-display').addClass('app-msg').html('Loading, please wait... Data import will take about 1-2 minutes.')
     })
+
+    $('#reset-search-form').click(function(){
+        $('#q_user_id_start').val('');
+    })
 })

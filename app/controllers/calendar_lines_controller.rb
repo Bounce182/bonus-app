@@ -12,7 +12,8 @@ class CalendarLinesController < ApplicationController
       redirect_to calendar_lines_url, notice: 'Database was updated successfully.'
     end
 
-    @calendar_lines = CalendarLine.all.paginate(:page => params[:page], :per_page => 10)
+    @search = CalendarLine.search(params[:q])
+    @calendar_lines = @search.result.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /calendar_lines/1

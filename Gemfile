@@ -29,6 +29,9 @@ gem 'spring',        group: :development
 # Pagination plugin
 gem 'will_paginate', '~> 3.0'
 
+# Search plugin
+gem 'ransack'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

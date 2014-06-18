@@ -4,17 +4,10 @@
     No data found. Please import it at first: <%= link_to 'Import data', calendar_lines_path(:update => true), :id => 'import-data' %>
 <% else %>
 
-<%# form_tag (calendar_lines_path) do %>
-    <%# label_tag :filter_user_id %><br>
-    <%# number_field_tag(:user_id) %>
-    <%# submit_tag 'Search' %>
-<%# end %>
-
-User id:
-<%= form_for(:filters, :url => calendar_lines_path, :html => {:method => :get} ) do |f| %>
-    <div>
-        <%= number_field('', ':user_id' ) %>
-        <%= f.submit 'Filter' %>
+<%= search_form_for @search do |f| %>
+    <div class="field">
+      <%= f.label :user_id_start, 'User id' %>
+      <%= f.number_field :user_id_start %><%= f.submit %><%= f.submit 'Clear', :id => 'reset-search-form' %>
     </div>
 <% end %>
 
@@ -53,4 +46,4 @@ User id:
 
 <% end %>
 
-<%= params %>
+<%# params %>
